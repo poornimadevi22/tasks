@@ -1,0 +1,132 @@
+pagination with css
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Poppins,sans-serif;
+    
+    }
+    
+    .container{
+           width: 100%;
+           height: 100vh;
+           background: linear-gradient(45deg, #410358, #4700bc);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+    
+    }
+    
+    .pagination{
+         display:flex;
+         align-items: center;
+         background:#fff;
+         color: #383838;
+         padding: 10px 40px;
+         border-radius: 6px;
+    }
+    ul{
+    margin: 20px 30px;
+    
+    }
+    
+    ul li{
+    display:inline-block;
+    margin: 0 0px;
+    width: 45px;
+    height:45px;
+    border-radius: 50;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    line-height:45px;
+    cursor:pointer;
+    background-position: 0 -45px;
+    transition: background-position 1s;
+    }
+    
+    ul li.active{
+       color:blue;
+       background-image:linear-gradient(#dc45ff,#dc45ff);
+      
+       background-repeat: no-repeat;
+       background-position: 0 0;
+    }
+    
+    .bt1, .bt2{
+         display:inline-flex;
+         align-items: center;
+         font-size: 22px;
+         font-weight: 500;
+         color: #383838;
+         background: transparent;
+         outline: none;
+         border: none;
+         cursor:pointer;
+    }
+    </style>
+<body>
+    <div class="container">
+        <div class="pagination">
+           <button class="bt1"onclick="backBtn()">prev</button> 
+          
+           <ul>
+            <li class="link active" value="1">1</li>
+            <li class="link"value="2" onclick="activelink()">2</li>
+            <li class="link" value="3"onclick="activelink()">3</li>
+            <li class="link" value="4" onclick="activelink()">4</li>
+            <li class="link" value="5"onclick="activelink()">5</li>
+            <li class="link"  value="6" onclick="activelink()">6</li>
+            <li class="link" value="7" onclick="activelink()" >7</li>
+</ul> 
+<button class="bt2" onclick="nextBtn()">next</button>
+
+
+        </div>
+    </div>
+<script>
+
+ let link=document.getElementsByClassName("link");
+ let currentvalue=1;
+
+ function activelink(){
+    for(l of link){
+        l.classList.remove("active");
+        }
+    event.target.classList.add("active");
+    currentvalue=event.target.value;
+ }
+
+ function backBtn(){
+    if(currentvalue>1){
+        for(l of link){
+        l.classList.remove("active");
+        }
+        currentvalue--;
+        link[currentvalue-1].classList.add("active");
+    } }
+
+    function nextBtn(){
+    if(currentvalue<7){
+        for(l of link){
+        l.classList.remove("active");
+        }
+        currentvalue++;
+        link[currentvalue-1].classList.add("active");
+    } }
+
+
+</script>
+
+</body>
+</html>
